@@ -60,9 +60,8 @@ class STDSecurity(object):
         self._cache_key = self.get_cache_key(id_key)
 
         std_conf = conf.get_conf(self.default_conf)
-        self._allow_write = std_conf['allow_write'] and kwargs.get('allow_write', True)
-        self._force_update = (std_conf['force_update'] or kwargs.get('force_update', False))
-        # self._flush = std_conf.get("flush") or kwargs.get("flush", False) # 没有被使用的参数 暂时注释
+        self._allow_write = std_conf['allow_write'] and kwargs.get('allow_write', False)
+        self._force_update = (std_conf['force_update'] or kwargs.get('force_update', False)) and self._allow_write
         self._through = kwargs.get('through', True)
         self._read_direct = kwargs.get('read_direct', False) and self._allow_write
         self._load_child = 'cache_dict' not in kwargs
@@ -79,17 +78,6 @@ class STDSecurity(object):
             self._valid_keys = self.keys
             # self._valid_keys = self.get_keys()
 
-        # 不再获取product
-        """
-        t1 = time.time() * 1000000
-        if kwargs.get('tmp_product'):
-            product, product_extend = kwargs.get('tmp_product'), None
-        else:
-            product, product_extend = self.get_product()
-        t2 = time.time() * 1000000
-        log_info('GET-PRODUCT', PROJECT, self.__class__.__name__, self._id_key, self._allow_write, t2-t1)
-        """
-
         if kwargs.get('tmp_entity'):
             self.tmp_entity = kwargs.get('tmp_entity')
 
@@ -100,7 +88,7 @@ class STDSecurity(object):
         try:
             self.will_calculate()
         except Exception as e:
-            log_error('DDERROR', PROJECT, self.__class__.__name__, self._id_key, "will_calculate", e)
+            log_error('STDERROR', PROJECT, self.__class__.__name__, self._id_key, "will_calculate", e)
             raise e
 
         self.calculate(cache_dict)
@@ -108,7 +96,7 @@ class STDSecurity(object):
         try:
             self.did_calculate()
         except Exception as e:
-            log_error('DDERROR', PROJECT, self.__class__.__name__, self._id_key, "did_calculate", e)
+            log_error('STDERROR', PROJECT, self.__class__.__name__, self._id_key, "did_calculate", e)
             raise e
 
     def __str__(self):
@@ -159,7 +147,7 @@ class STDSecurity(object):
                 indicator = self.get_indicator(vname, indicator_cls, cache_dict)
                 setattr(self, vname, indicator)
             except Exception as e:
-                log_error('DDERROR', PROJECT, self.__class__.__name__, self._id_key, "info", e)
+                log_error('STDERROR', PROJECT, self.__class__.__name__, self._id_key, "info", e)
                 raise e
 
             if vname in self._valid_keys:
@@ -171,11 +159,6 @@ class STDSecurity(object):
     def calculate(self, cache_dict={}):
         t1 = time.time() * 1000000
 
-        # cache_keys = []
-        # for vname in self._valid_keys:
-        #     cache_keys.append(self.get_indicator_cache_key(vname))
-
-        # cache_dict = cache.filter_cache_objects(cache_keys)d
         self.__cache_dict = cache_dict
         count = 0
         for vname, indicator_cls in self.indicators.items():
@@ -184,7 +167,7 @@ class STDSecurity(object):
                     indicator = self.get_indicator(vname, indicator_cls, cache_dict)
                     setattr(self, vname, indicator)
                 except Exception as e:
-                    log_error('DDERROR', PROJECT, self.__class__.__name__, self._id_key, vname, e)
+                    log_error('STDERROR', PROJECT, self.__class__.__name__, self._id_key, vname, e)
                     raise e
 
                 count = count + 1
