@@ -86,15 +86,15 @@ class STDSecurity(object):
         self.load_info(cache_dict)
 
         try:
-            self.will_calculate()
+            self.will_load()
         except Exception as e:
             log_error('STDERROR', PROJECT, self.__class__.__name__, self._id_key, "will_calculate", e)
             raise e
 
-        self.calculate(cache_dict)
+        self.load(cache_dict)
 
         try:
-            self.did_calculate()
+            self.did_load()
         except Exception as e:
             log_error('STDERROR', PROJECT, self.__class__.__name__, self._id_key, "did_calculate", e)
             raise e
@@ -153,10 +153,10 @@ class STDSecurity(object):
             if vname in self._valid_keys:
                 self._valid_keys.remove(vname)
 
-    def will_calculate(self):
+    def will_load(self):
         pass
 
-    def calculate(self, cache_dict={}):
+    def load(self, cache_dict={}):
         t1 = time.time() * 1000000
 
         self.__cache_dict = cache_dict
@@ -177,7 +177,7 @@ class STDSecurity(object):
 
         return self
 
-    def did_calculate(self):
+    def did_load(self):
         t1 = time.time() * 1000000
         if self.est_date:
             self.update_est()
@@ -194,7 +194,7 @@ class STDSecurity(object):
         get_method = "FUNC"
         if not indicator_cls:
             return None
-        # 如果是写在product下的 get_xxx函数 直接调用
+        # get_xxx函数 直接调用
         if hasattr(self, indicator_cls):
             t12 = time.time() * 1000000
             indicator = getattr(self, indicator_cls)()
