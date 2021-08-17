@@ -1,4 +1,4 @@
+from STDIndicator.STDIndicatorType import *
 
+from STDIndicator.STDIndicatorInfo import *
 
-def get_indicator_cls():
-    return

@@ -10,7 +10,7 @@ from datetime import date
 from STDFinance.STDIndicator import STDIndicatorType
 from STDFinance.STDSecurity import *
 from STDFinance.STDUtils import utils
-from STDFinance.STDIndicator import get_indicator_cls
+from STDUtils.indicator import get_indicator_cls
 
 
 class STDSerializerSecurity(object):

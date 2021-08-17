@@ -5,7 +5,7 @@ from typing import Any
 from STDFinance import STDIndicator
 from STDFinance import cache, conf
 from STDFinance.conf import PROJECT
-from STDIndicator import get_indicator_cls
+from STDUtils.indicator import get_indicator_cls
 from datetime import datetime
 import time
 from STDFinance.STDUtils import log_info, log_warning, log_error

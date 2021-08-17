@@ -2,7 +2,7 @@ import collections
 import pandas as pd
 from datetime import datetime
 from STDFinance.STDUtils import utils
-from STDFinance.STDIndicator import get_indicator_cls
+from STDFinance.STDUtils.indicator import get_indicator_cls
 
 
 class STDIndicatorBase(object):

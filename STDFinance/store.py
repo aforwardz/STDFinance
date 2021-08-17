@@ -5,5 +5,5 @@ code = 'SH600519'
 
 keys = ['info']
 
-STDStock(code, allow_write=True, force_update=True, keys=keys)
+STDStock('SH600519', allow_write=True, force_update=True, keys=['info'])
 
