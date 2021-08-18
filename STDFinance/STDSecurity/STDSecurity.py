@@ -100,7 +100,7 @@ class STDSecurity(object):
             raise e
 
     def __str__(self):
-        return str(self.info)
+        return "{std_class}--[{id_key}]".format(std_class=self.__class__.__name__, id_key=self.id_key)
 
     def get_keys(self, prefix=""):
         keys = []
@@ -274,7 +274,7 @@ class STDSecurity(object):
         result = hasattr(self, key)
         if result:
             attr = getattr(self, key)
-            if isinstance(attr, DDIndicator.DDIndicatorBase):
+            if isinstance(attr, STDIndicator.STDIndicatorBase):
                 result = result and attr and not attr.empty
         return result
 

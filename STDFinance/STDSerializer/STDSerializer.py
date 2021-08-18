@@ -240,12 +240,12 @@ class STDConstructor(object):
         if not isinstance(data, dict):
             return data
         if isinstance(data, dict) and data.get('security_type'):
-            return self._construct_entity(data)
+            return self._construct_security(data)
         elif isinstance(data, dict) and data.get('base_indicator'):
             base_indicator = data.pop('base_indicator')
-            indicator_cls = data.get('ddclass')
+            indicator_cls = data.get('std_class')
             indicator = get_indicator_cls(indicator_cls)
-            assert indicator, "DDIndicator %s Class Not Found" % indicator_cls
+            assert indicator, "STDIndicator %s Class Not Found" % indicator_cls
             # indicator = indicator.__new__(indicator)
             indicator = indicator()
             if base_indicator == 'STDIndicatorSingle':

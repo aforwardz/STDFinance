@@ -148,7 +148,9 @@ class STDIndicatorBase(object):
         if self._skip_load:
             return indicator
         if stdobj.security_type:
-            return indicator
+            _load_method = 'load_{}'.format(stdobj.security_type)
+            if hasattr(indicator, _load_method):
+                return getattr(indicator, _load_method)(stdobj)
         return indicator
 
 

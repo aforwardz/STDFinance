@@ -3,7 +3,7 @@ import logging
 logger = logging.getLogger('std_logger')
 
 
-def log(level="info", *args):
+def log(*args, level="info"):
     s = " ".join([str(x) for x in args])
     if level == "info":
         logger.info(s)
@@ -14,12 +14,12 @@ def log(level="info", *args):
 
 
 def log_info(*args):
-    log(level="info", *args)
+    log(*args, level="info")
 
 
 def log_warning(*args):
-    log(level="warning", *args)
+    log(*args, level="warning")
 
 
 def log_error(*args):
-    log(level="error", *args)
+    log(*args, level="error")
