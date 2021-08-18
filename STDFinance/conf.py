@@ -8,7 +8,7 @@ STDFINANCE_CONF = {
         "force_update": False,
         "cache": {
             "middleware": "REDIS",
-            "address": "127.0.0.1:6379/1"
+            "address": "redis://127.0.0.1:6379/1"
         }
     }
 }

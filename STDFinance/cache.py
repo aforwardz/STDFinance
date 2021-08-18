@@ -127,7 +127,7 @@ def get_cache_instance(key):
     #     return CacheORM(cache_conf['model'])
     # elif cache_conf['method'] == 'API':
     #     return CacheAPI(cache_conf['url'], cache_conf['auth'])
-    if cache_conf['middlware'] == 'Redis':
+    if cache_conf['middleware'] == 'REDIS':
         return CacheRedis(cache_conf['address'])
 
 

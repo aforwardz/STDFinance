@@ -1,4 +1,4 @@
-from STDIndicator.STDIndicatorType import *
+from .STDIndicatorType import *
 
-from STDIndicator.STDIndicatorInfo import *
+from .STDIndicatorInfo import *
 

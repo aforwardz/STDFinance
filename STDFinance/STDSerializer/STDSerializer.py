@@ -44,9 +44,9 @@ class STDSerializerIndicatorBase(object):
 
     def get_basic_representation(self):
         ret = {}
-        ret['stdclass'] = self.indicator.__class__.__name__
-        ret['stdname'] = self.indicator.stdname
-        ret['stdtitle'] = self.indicator.stdtitle
+        ret['std_class'] = self.indicator.__class__.__name__
+        ret['std_name'] = self.indicator.std_name
+        ret['std_title'] = self.indicator.std_title
         ret['help_text'] = self.indicator.help_text
         ret['value'] = utils.value_format(self.indicator.value, self.indicator._prec)
 
@@ -248,19 +248,19 @@ class STDConstructor(object):
             assert indicator, "DDIndicator %s Class Not Found" % indicator_cls
             # indicator = indicator.__new__(indicator)
             indicator = indicator()
-            if base_indicator == 'DDIndicatorSingle':
+            if base_indicator == 'STDIndicatorSingle':
                 for k, v in data.items():
                     setattr(indicator, k, v)
-            elif base_indicator == 'DDIndicatorMapping':
+            elif base_indicator == 'STDIndicatorMapping':
                 indicator.data = {}
                 mapping = data.pop('mapping')
                 for k, v in mapping.items():
                     indicator[k] = self._construct_indicator(v)
-            elif base_indicator == 'DDIndicatorSequence':
+            elif base_indicator == 'STDIndicatorSequence':
                 indicator.data = []
                 sequence = data.pop('sequence')
                 indicator.extend([self._construct_indicator(i) for i in sequence])
-            elif base_indicator == 'DDIndicatorDataFrame':
+            elif base_indicator == 'STDIndicatorDataFrame':
                 df = deserialize_df(data.pop('df'))
                 indicator.df = df
 
