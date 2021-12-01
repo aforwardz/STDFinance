@@ -7,9 +7,9 @@ import base64
 import numpy as np
 import pandas as pd
 from datetime import date
-from STDFinance.STDIndicator import STDIndicatorType
-from STDFinance.STDSecurity import *
-from STDFinance.STDUtils import utils
+from STDIndicator import STDIndicatorType
+from STDSecurity import *
+from STDUtils import utils
 from STDUtils.indicator import get_indicator_cls
 
 

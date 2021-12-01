@@ -1,4 +1,4 @@
-from STDFinance import STDIndicator
+import STDIndicator
 
 
 def get_indicator_cls(indicator_cls):

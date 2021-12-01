@@ -2,16 +2,17 @@ import collections
 import traceback
 import copy
 from typing import Any
-from STDFinance import STDIndicator
-from STDFinance import cache, conf
-from STDFinance.conf import PROJECT
+from abc import ABC
+import STDIndicator
+import cache, conf
+from conf import PROJECT
 from STDUtils.indicator import get_indicator_cls
 from datetime import datetime
 import time
-from STDFinance.STDUtils import log_info, log_warning, log_error
+from STDUtils import log_info, log_warning, log_error
 
 
-class STDSecurity(object):
+class STDSecurity(ABC):
     security_type = "base"
     default_conf = "default"
     start_date = None  # 产品的开始时间

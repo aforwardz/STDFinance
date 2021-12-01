@@ -4,9 +4,9 @@ import redis
 import traceback
 import pickle
 import base64
-from STDFinance import conf
-from STDFinance.conf import PROJECT
-from STDFinance.STDUtils import log_info, log_warning, log_error, utils
+import conf
+from conf import PROJECT
+from STDUtils import log_info, log_warning, log_error, utils
 import zlib
 import time
 
