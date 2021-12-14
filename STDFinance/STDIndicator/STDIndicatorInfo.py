@@ -12,10 +12,15 @@ class STDIndicatorInfo(STDIndicator.STDIndicatorMapping):
     _prec = 4
 
     def load_stock(self, stdobj):
+        self['sec_type'] = ""
         self['name'] = ""
         self['short_name'] = ""
-        self['code'] = ""
-        self['ticker_symbol'] = ""
-        self['exchange'] = ""
+        self['code'] = ""      # 600519
+        self['ticker_symbol'] = ""    # 600519SH
+        self['exchange'] = ""       # SH、SZ、BJ
+        self['list_board'] = ""       #
+        self['list_date'] = None
+        self['list_status'] = ""
+        self['delist_date'] = None
 
         return self

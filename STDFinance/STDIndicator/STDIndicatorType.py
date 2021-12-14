@@ -16,7 +16,6 @@ class STDIndicatorBase(object):
 
     summary_text = ""
     summary_review = ""
-    _variable_ddname = ""
 
     __start_date = None
     __end_date = None
