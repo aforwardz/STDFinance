@@ -1,7 +1,7 @@
 from dateutil.relativedelta import relativedelta
 from datetime import date, datetime, timedelta
 from decimal import Decimal
-from STDUtils.options import DURATION_MAPPING
+from STDFinance.STDUtils.options import DURATION_MAPPING
 import io
 import importlib
 import pandas as pd

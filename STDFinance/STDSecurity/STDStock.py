@@ -1,9 +1,9 @@
 import collections
 from abc import ABC
-from STDSecurity import STDSecurity
+from STDFinance.STDSecurity.STDBase import STDSecurityBase
 
 
-class STDStock(STDSecurity):
+class STDStock(STDSecurityBase):
     security_type = 'stock'
 
     indicators = collections.OrderedDict([

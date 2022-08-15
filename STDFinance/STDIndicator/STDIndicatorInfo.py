@@ -1,4 +1,4 @@
-import STDIndicator
+from STDFinance import STDIndicator
 
 __all__ = [
     'STDIndicatorInfo',
