@@ -1,5 +1,7 @@
 import collections
 import pandas as pd
+import akshare as ak
+import baostock as bs
 from datetime import datetime
 from STDFinance.STDUtils import utils
 from STDFinance.STDUtils.indicator import get_indicator_cls

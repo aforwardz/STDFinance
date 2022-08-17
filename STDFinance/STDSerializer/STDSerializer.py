@@ -8,7 +8,6 @@ import numpy as np
 import pandas as pd
 from datetime import date, datetime
 from STDFinance.STDIndicator import STDIndicatorType
-from STDFinance.STDIndicator.api import get_indicator_cls
 from STDFinance.STDSecurity.api import *
 from STDFinance.STDUtils import utils
 from STDFinance.STDUtils.indicator import get_indicator_cls
@@ -132,7 +131,7 @@ class STDSerializerIndicatorDataFrame(STDSerializerIndicatorBase):
 
 class DDRawEncoder(json.JSONEncoder):
     def default(self, obj):
-        if isinstance(obj, STDSecurity):
+        if isinstance(obj, STDSecurityBase):
             v = STDSerializerSecurity(obj).data()
         elif isinstance(obj, STDIndicatorType.STDIndicatorSingle):
             v = STDSerializerIndicatorSingle(obj).sdata
@@ -162,7 +161,7 @@ class DDRawEncoder(json.JSONEncoder):
 
 class DDStandardEncoder(json.JSONEncoder):
     def default(self, obj):
-        if isinstance(obj, STDSecurity):
+        if isinstance(obj, STDSecurityBase):
             v = STDSerializerSecurity(obj).data()
         elif isinstance(obj, STDIndicatorType.STDIndicatorSingle):
             v = STDSerializerIndicatorSingle(obj).sdata
