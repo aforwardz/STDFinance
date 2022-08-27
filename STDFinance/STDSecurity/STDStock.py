@@ -9,6 +9,7 @@ class STDStock(STDSecurityBase):
     indicators = collections.OrderedDict([
         ('info', 'STDIndicatorInfo'),
         ('hist_daily', 'STDIndicatorHistRecordsDaily'),
+        ('dividend_records', 'STDIndicatorDividendRecords'),
     ])
 
     def will_load(self):
